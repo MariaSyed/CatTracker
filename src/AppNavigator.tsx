@@ -4,6 +4,7 @@ import { createStackNavigator } from 'react-navigation-stack';
 import Home from './screens/Home';
 import CatProfile from './screens/CatProfile';
 import FeedingHistory from './screens/FeedingHistory';
+import { View } from 'react-native';
 
 const AppNavigator = createStackNavigator({
   Home: {
@@ -14,6 +15,12 @@ const AppNavigator = createStackNavigator({
   },
   FeedingHistory: {
     screen: FeedingHistory
+  },
+  AddFeeding: {
+    screen: () => <View />
+  },
+  AddReceipt: {
+    screen: () => <View />
   }
 });
 
