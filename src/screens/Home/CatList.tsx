@@ -1,27 +1,10 @@
 import * as React from 'react';
-import {
-  FlatList,
-  Text,
-  View,
-  Image,
-  ImageSourcePropType,
-  StyleSheet
-} from 'react-native';
+import { FlatList, Text, View, Image, StyleSheet } from 'react-native';
 import moment from 'moment';
 import Icons from 'react-native-vector-icons/MaterialIcons';
 import Images from '../../assets/images';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-
-interface Cat {
-  key: string;
-  name: string;
-  lastFedBrand: string;
-  lastFedFlavour: string;
-  lastFed: string;
-  leftAlone: string;
-  foodPacketsLeft: number;
-  photo: ImageSourcePropType;
-}
+import { Cat } from '../../types/types';
 
 const mockCats: Cat[] = [
   {
@@ -52,8 +35,10 @@ const mockCats: Cat[] = [
   }
 ];
 
-const renderItem = ({ item }: { item: Cat }) => (
-  <TouchableOpacity style={styles.itemContainer}>
+const renderItem = (item: Cat, openCatProfile: (cat: Cat) => void) => (
+  <TouchableOpacity
+    style={styles.itemContainer}
+    onPress={() => openCatProfile(item)}>
     <Image source={item.photo} style={styles.photo} />
     <View style={styles.content}>
       <Text style={styles.title}>{item.name}</Text>
@@ -72,10 +57,17 @@ const renderItem = ({ item }: { item: Cat }) => (
   </TouchableOpacity>
 );
 
-export interface CatListProps {}
+export interface CatListProps {
+  openCatProfile: (cat: Cat) => void;
+}
 
-const CatList: React.SFC<CatListProps> = () => {
-  return <FlatList data={mockCats} renderItem={renderItem} />;
+const CatList: React.SFC<CatListProps> = props => {
+  return (
+    <FlatList
+      data={mockCats}
+      renderItem={({ item }) => renderItem(item, props.openCatProfile)}
+    />
+  );
 };
 
 const styles = StyleSheet.create({

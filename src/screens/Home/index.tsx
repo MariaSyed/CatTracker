@@ -19,7 +19,9 @@ const Home: React.SFC<HomeProps> = props => {
   return (
     <View style={styles.container}>
       <ImageHeader source={Images.HomeHeader} />
-      <CatList />
+      <CatList
+        openCatProfile={cat => props.navigation.navigate('CatProfile', { cat })}
+      />
       <View style={styles.fabContainer}>
         <FAB
           color="orange"
@@ -49,6 +51,7 @@ const Home: React.SFC<HomeProps> = props => {
   );
 };
 
+// @ts-ignore
 Home.navigationOptions = {
   title: 'Cat Tracker'
 };
