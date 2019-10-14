@@ -8,7 +8,7 @@ import {
   StyleSheet
 } from 'react-native';
 import moment from 'moment';
-import Icons from 'react-native-vector-icons/EvilIcons';
+import Icons from 'react-native-vector-icons/MaterialIcons';
 import Images from '../../assets/images';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
@@ -109,7 +109,7 @@ const styles = StyleSheet.create({
     marginBottom: 5
   },
   rightIcon: {
-    fontSize: 40,
+    fontSize: 30,
     textAlign: 'right',
     color: '#ccc',
     flex: 1

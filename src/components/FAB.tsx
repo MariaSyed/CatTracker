@@ -1,19 +1,27 @@
 import * as React from 'react';
 import { View, StyleSheet, TouchableOpacity } from 'react-native';
-import Icon from 'react-native-vector-icons/EvilIcons';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
+type FABType = 'edit' | 'exit-enter' | 'feed' | 'receipt';
+
+const FABIconMap: { [k in FABType]: string } = {
+  edit: 'pencil',
+  'exit-enter': 'home',
+  feed: 'add',
+  receipt: 'receipt'
+};
 export interface FABProps {
-  icon: 'edit' | 'exit' | 'enter' | 'feed' | 'receipt';
+  type: FABType;
   color: string;
   onPress: () => void;
 }
 
-const FAB: React.SFC<FABProps> = ({ icon, color, onPress }) => {
+const FAB: React.SFC<FABProps> = ({ type, color, onPress }) => {
   return (
     <TouchableOpacity
       style={[styles.button, { backgroundColor: color }]}
       onPress={onPress}>
-      <Icon name="unlock" style={styles.icon} />
+      <Icon name={FABIconMap[type]} style={styles.icon} />
     </TouchableOpacity>
   );
 };
@@ -35,7 +43,7 @@ const styles = StyleSheet.create({
   },
   icon: {
     color: 'white',
-    fontSize: 60,
+    fontSize: 40,
     textAlign: 'center',
     textAlignVertical: 'center'
   }

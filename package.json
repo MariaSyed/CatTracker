@@ -24,6 +24,7 @@
     "react-native-vector-icons": "^6.6.0",
     "react-navigation": "^4.0.10",
     "react-navigation-stack": "^1.9.4",
+    "splitwise": "^1.0.0",
     "typescript": "^3.6.4"
   },
   "devDependencies": {

@@ -23,17 +23,17 @@ const Home: React.SFC<HomeProps> = props => {
       <View style={styles.fabContainer}>
         <FAB
           color="orange"
-          icon={'receipt'}
+          type={'receipt'}
           onPress={() => props.navigation.navigate('AddReceipt')}
         />
         <FAB
           color="blue"
-          icon={'feed'}
+          type={'feed'}
           onPress={() => props.navigation.navigate('AddFeeding')}
         />
         <FAB
           color="red"
-          icon={'exit'}
+          type={'exit-enter'}
           onPress={() => {
             Alert.prompt(
               'Leave house',
